@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ww_unlockfps"
         mc:Ignorable="d"
-        Title="Manual Mode" Height="200" Width="330" ResizeMode="NoResize">
+        Title="手动模式" Height="200" Width="330" ResizeMode="NoResize">
     <DockPanel Background="{DynamicResource GradientBackground}">
         <!--Grid DockPanel.Dock="Bottom">
             <Grid.RowDefinitions>
@@ -79,8 +79,8 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label x:Name="tiplaunch" Content="Waiting for game to launch" Grid.Row="0" HorizontalAlignment="Center"  FontFamily="Meiryo" FontSize="15" Foreground="#FF3A86FF" VerticalAlignment="Top" Margin="0,-15,0,0" />
-            <TextBlock Text="Tips" Grid.Row="2" HorizontalAlignment="Center" FontFamily="Meiryo" FontSize="15" Foreground="#f1404b" VerticalAlignment="Bottom" Margin="0,0,0,5" >
+            <Label x:Name="tiplaunch" Content="等待游戏启动中" Grid.Row="0" HorizontalAlignment="Center"  FontFamily="Meiryo" FontSize="15" Foreground="#FF3A86FF" VerticalAlignment="Top" Margin="0,-15,0,0" />
+            <TextBlock Text="提示" Grid.Row="2" HorizontalAlignment="Center" FontFamily="Meiryo" FontSize="15" Foreground="#f1404b" VerticalAlignment="Bottom" Margin="0,0,0,5" >
                 <TextBlock.TextDecorations>
                     <TextDecoration Location="Underline"/>
                 </TextBlock.TextDecorations>
@@ -89,7 +89,7 @@
                         <TextBlock 
             TextWrapping="Wrap" 
             MaxWidth="300"
-            Text="In this mode, only the following functions are valid: Unlock FPS; Game Area Selection; Power Saving and Game Process Priority"/>
+            Text="在此模式下，仅以下功能有效：解锁 FPS；游戏区服选择；省电模式和游戏进程优先级"/>
                     </ToolTip>
                 </TextBlock.ToolTip>
             </TextBlock>

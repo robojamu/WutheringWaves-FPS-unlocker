@@ -110,7 +110,7 @@ namespace ww_unlockfps
             }
             catch
             {
-                System.Windows.MessageBox.Show("config error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show("配置读取错误", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -130,7 +130,7 @@ namespace ww_unlockfps
             }
             catch 
             {
-                System.Windows.MessageBox.Show("Save config error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show("保存配置错误", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
                 System.Windows.Application.Current.Dispatcher.Invoke(() =>
                 {
                     System.Windows.Application.Current.Shutdown();
@@ -190,20 +190,20 @@ namespace ww_unlockfps
 
                 if (files.Length > 1)
                 {
-                    System.Windows.MessageBox.Show("Please drag only one file", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                    System.Windows.MessageBox.Show("请一次只拖入一个文件", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
                     return;
                 }
 
                 string file = files[0];
                 if (System.IO.Path.GetExtension(file).ToLower() != ".exe")
                 {
-                    System.Windows.MessageBox.Show("This is not the correct game EXE file", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                    System.Windows.MessageBox.Show("这不是正确的游戏 EXE 文件", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
                     return;
                 }
 
                 if (System.IO.Path.GetFileName(file).ToLower() != "wuthering waves.exe")
                 {
-                    System.Windows.MessageBox.Show("This is not the correct game EXE file", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                    System.Windows.MessageBox.Show("这不是正确的游戏 EXE 文件", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
                     return;
                 }
                 Path_EXE.Clear();
@@ -224,23 +224,23 @@ namespace ww_unlockfps
                 {
                     if (System.IO.Directory.Exists(clientFolderPath))
                     {
-                        System.Windows.MessageBox.Show("Save Config successsfully", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                        System.Windows.MessageBox.Show("配置保存成功", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
                         SaveConfig();
                         this.Close();
                     }
                     else
                     {
-                        System.Windows.MessageBox.Show("That's not the right place", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        System.Windows.MessageBox.Show("路径不正确", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 else
                 {
-                    System.Windows.MessageBox.Show("The game EXE does not exist", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show("游戏 EXE 不存在", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
             {
-                System.Windows.MessageBox.Show("Game EXE path is not right", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show("游戏 EXE 路径不正确", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

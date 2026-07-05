@@ -1,0 +1,57 @@
+name: Build WW FPS Unlocker (汉化版)
+
+# 触发方式：推送到 main 分支、打 tag、或在 Actions 页面手动点击运行
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest   # 必须用 Windows，因为是 WPF (net8.0-windows) 项目
+    permissions:
+      contents: write   # 创建 Release / 上传附件需要写权限
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 .NET 8 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: 还原依赖 (NuGet)
+        run: dotnet restore ww_unlockfps/ww_unlockfps.csproj
+
+      # 精简版（依赖框架）：产物是完整的运行文件夹，用户需自行安装 .NET 8 桌面运行时
+      - name: 发布 (Release, 依赖框架)
+        run: >
+          dotnet publish ww_unlockfps/ww_unlockfps.csproj
+          -c Release
+          --no-restore
+          --self-contained false
+          -o publish
+
+      - name: 上传编译产物（整个文件夹）
+        uses: actions/upload-artifact@v4
+        with:
+          name: ww_unlockfps-汉化版
+          # 上传整个 publish 目录，包含 exe / dll / runtimeconfig.json 等全部必需文件
+          path: publish/**
+          if-no-files-found: error
+
+      # 打 tag (v开头) 时，把整个文件夹压成 zip 并创建 Release
+      - name: 打包 zip (仅打 tag 时)
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: Compress-Archive -Path publish/* -DestinationPath ww_unlockfps-汉化版.zip
+        shell: pwsh
+
+      - name: 创建 Release (仅打 tag 时)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ww_unlockfps-汉化版.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

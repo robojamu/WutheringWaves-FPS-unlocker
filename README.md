@@ -1,4 +1,8 @@
-# Wuther FPS Unlocker
+# Wuther FPS Unlocker（汉化版）
+
+> **本项目是 [30launchers/WutheringWaves-FPS-unlocker](https://github.com/30launchers/WutheringWaves-FPS-unlocker) 的汉化 Fork。**
+> 全部功能与代码归原作者 **30launchers** 所有，本 Fork 仅将图形界面（菜单、按钮、弹窗提示等）翻译为中文，并添加了 GitHub Actions 在线编译流程。原项目采用 MIT 许可证。
+> 如需原版或提交功能相关的 Issue / PR，请前往[原仓库](https://github.com/30launchers/WutheringWaves-FPS-unlocker)。
 
 鸣潮(Wuthering Waves) FPS解锁工具，支持帧率解锁、FOV调整、隐藏UID等功能。
 

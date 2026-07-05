@@ -141,7 +141,7 @@ namespace ww_unlockfps
 
             if (!createdNew)
             {
-                MessageBox.Show("Another unlocker is already running", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("已有另一个解锁工具正在运行", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
                 Application.Current.Shutdown();
             }
             else
@@ -159,7 +159,7 @@ namespace ww_unlockfps
                         this.Hide(); // Hide the window and show the tray icon
                         notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
                         notifyIcon.BalloonTipTitle = "Wuther FPS Unlocker";
-                        notifyIcon.BalloonTipText = "Minimized to tray";
+                        notifyIcon.BalloonTipText = "已最小化到托盘";
                         notifyIcon.ShowBalloonTip(3000);
                     }
                 }
@@ -276,7 +276,7 @@ namespace ww_unlockfps
 
         private void Power_Saving_Checked(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show("Failed to load config file" + Environment.NewLine + "Your config file doesn't appear to be in the correct format" + Environment.NewLine + "It will be reset to default", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //MessageBox.Show("加载配置文件失败" + Environment.NewLine + "您的配置文件格式似乎不正确" + Environment.NewLine + "将重置为默认设置", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
             lock (_lock3)
             {
                 check_power_saving_sre = true;
@@ -286,7 +286,7 @@ namespace ww_unlockfps
 
         private void Power_Saving_Unchecked(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show("Failed to load config file" + Environment.NewLine + "Your config file doesn't appear to be in the correct format" + Environment.NewLine + "It will be reset to default", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //MessageBox.Show("加载配置文件失败" + Environment.NewLine + "您的配置文件格式似乎不正确" + Environment.NewLine + "将重置为默认设置", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
             lock (_lock3)
             {
                 check_power_saving_sre = false;
@@ -300,12 +300,12 @@ namespace ww_unlockfps
 
         private void AutoStart_Checked(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show("Failed to load config file" + Environment.NewLine + "Your config file doesn't appear to be in the correct format" + Environment.NewLine + "It will be reset to default", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //MessageBox.Show("加载配置文件失败" + Environment.NewLine + "您的配置文件格式似乎不正确" + Environment.NewLine + "将重置为默认设置", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
         private void AutoStart_Unchecked(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show("Failed to load config file" + Environment.NewLine + "Your config file doesn't appear to be in the correct format" + Environment.NewLine + "It will be reset to default", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //MessageBox.Show("加载配置文件失败" + Environment.NewLine + "您的配置文件格式似乎不正确" + Environment.NewLine + "将重置为默认设置", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
 
@@ -358,7 +358,7 @@ namespace ww_unlockfps
 
             // Context menu
             ContextMenuStrip contextMenu = new ContextMenuStrip();
-            ToolStripMenuItem exitMenuItem = new ToolStripMenuItem("Quit");
+            ToolStripMenuItem exitMenuItem = new ToolStripMenuItem("退出");
             exitMenuItem.Click += ExitMenuItem_Click;
             contextMenu.Items.Add(exitMenuItem);
             notifyIcon.ContextMenuStrip = contextMenu;
@@ -397,7 +397,7 @@ namespace ww_unlockfps
                 this.Hide(); // Hide the window and show the tray icon
                 notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
                 notifyIcon.BalloonTipTitle = "Wuther FPS Unlocker";
-                notifyIcon.BalloonTipText = "Minimized to tray";
+                notifyIcon.BalloonTipText = "已最小化到托盘";
                 notifyIcon.ShowBalloonTip(3000);
             }
             base.OnStateChanged(e);
@@ -470,9 +470,9 @@ namespace ww_unlockfps
             if (!File.Exists(ConfigFileName))
             {
                 CreateConfigFile();
-                MessageBox.Show("             ❄  叮~~~   Instructions  ❄" + Environment.NewLine + "" + Environment.NewLine + "1.Please set the Game EXE path at first" + Environment.NewLine +
-                    "2.FPS unlocker will minimized to tray" + Environment.NewLine + "after game start"
-                    + Environment.NewLine + "3.All settings will be saved automatically", "Welcome");
+                MessageBox.Show("             ❄  叮~~~   使用说明  ❄" + Environment.NewLine + "" + Environment.NewLine + "1.请先设置游戏 EXE 路径" + Environment.NewLine +
+                    "2.游戏启动后，FPS 解锁工具将最小化到托盘"
+                    + Environment.NewLine + "3.所有设置将自动保存", "欢迎");
                 //20241209
                 checkautostart = true;
             }
@@ -504,7 +504,7 @@ namespace ww_unlockfps
                 {
                     ck_priority = 0;
                     //CreateConfigFile();
-                    //MessageBox.Show("Failed to load config file" + Environment.NewLine + "Your config file doesn't appear to be in the correct format" + Environment.NewLine + "It will be reset to default", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    //MessageBox.Show("加载配置文件失败" + Environment.NewLine + "您的配置文件格式似乎不正确" + Environment.NewLine + "将重置为默认设置", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 Ck_Priority();
 
@@ -566,7 +566,7 @@ namespace ww_unlockfps
             catch (Exception)
             {
                 CreateConfigFile();
-                MessageBox.Show("Failed to load config file" + Environment.NewLine + "Your config file doesn't appear to be in the correct format" + Environment.NewLine + "It will be reset to default", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("加载配置文件失败" + Environment.NewLine + "您的配置文件格式似乎不正确" + Environment.NewLine + "将重置为默认设置", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
                 //20241209
                 checkautostart = true;
             }
@@ -574,7 +574,7 @@ namespace ww_unlockfps
             if (checkinisuccess == false)
             {
                 CreateConfigFile();
-                MessageBox.Show("Failed to load config file" + Environment.NewLine + "Your config file doesn't appear to be in the correct format" + Environment.NewLine + "It will be reset to default", "Notification", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("加载配置文件失败" + Environment.NewLine + "您的配置文件格式似乎不正确" + Environment.NewLine + "将重置为默认设置", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
                 //20241209
                 checkautostart = true;
             }
@@ -590,7 +590,7 @@ namespace ww_unlockfps
             var data = new IniData();
             data.Sections.AddSection(Section);
             data[Section][InputKey] = string.Empty;
-            data[Section][InputKey2] = "Drag the Game EXE file onto the top";
+            data[Section][InputKey2] = "请将游戏 EXE 文件拖到上方";
             data[Section][OptionKey] = false.ToString();
             data[Section][OptionKey2] = false.ToString();
             data[Section][OptionKey3] = false.ToString();
@@ -750,7 +750,7 @@ namespace ww_unlockfps
                 }
             }
             else
-                MessageBox.Show("This is the maximum value", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("已达到最大值", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }
 
@@ -778,7 +778,7 @@ namespace ww_unlockfps
                 }
             }
             else
-                MessageBox.Show("This is the minimum value", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("已达到最小值", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
 
@@ -937,12 +937,12 @@ namespace ww_unlockfps
                 }
                 else
                 {
-                    MessageBox.Show("Cannot clear cache: Game is not running.", "Clear Cache Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("无法清除缓存：游戏未运行。", "清除缓存错误", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to clear cache: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"清除缓存失败：{ex.Message}", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -1018,7 +1018,7 @@ namespace ww_unlockfps
             }
             catch
             {
-                MessageBox.Show("INI file not exist", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("INI 文件不存在", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             string GameServerA = data[Section][OptionKey5];
@@ -1171,13 +1171,13 @@ namespace ww_unlockfps
 
                         Task.Run(() => Unlockstart_test(_exechose));
                         start_but.IsEnabled = false;
-                        start_but.Content = "Running";
+                        start_but.Content = "运行中";
                         await Task.Delay(1531);
                         this.WindowState = WindowState.Minimized;
                     }
                     else
                     {
-                        MessageBox.Show("Game EXE file not exist", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("游戏 EXE 文件不存在", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
                         startgame_test1 = false;
 
                         if (check_auto_start.IsChecked == false)
@@ -1312,13 +1312,13 @@ namespace ww_unlockfps
 
                         Task.Run(() => Unlockstart_test(_exechose));
                         start_but.IsEnabled = false;
-                        start_but.Content = "Running";
+                        start_but.Content = "运行中";
                         await Task.Delay(1131);
                         this.WindowState = WindowState.Minimized;
                     }
                     else
                     {
-                        MessageBox.Show("Game EXE file not exist", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("游戏 EXE 文件不存在", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
                         startgame_test1 = false;
                         if (check_auto_start.IsChecked == false)
                         {
@@ -1334,7 +1334,7 @@ namespace ww_unlockfps
             }
             catch (FormatException)
             {
-                MessageBox.Show("Launch Game Error!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("启动游戏错误！", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (OverflowException)
             {
@@ -1935,12 +1935,12 @@ namespace ww_unlockfps
                     {
                         Application.Current.Dispatcher.Invoke(() =>
                         {
-                            MessageBox.Show("Could not find fps pattern" + Environment.NewLine +
-                "The reason might be:" + Environment.NewLine +
-                "1. Wuthering Waves was not closed correctly" + Environment.NewLine +
-                "2. The user selected the wrong Wuthering Waves EXE file" + Environment.NewLine +
-                "3. Game version update causes memory address changes that cannot be modified",
-                "Notification",
+                            MessageBox.Show("未能找到 FPS 特征码" + Environment.NewLine +
+                "可能的原因：" + Environment.NewLine +
+                "1. 鸣潮未正确关闭" + Environment.NewLine +
+                "2. 选择了错误的鸣潮 EXE 文件" + Environment.NewLine +
+                "3. 游戏版本更新导致内存地址变化，无法修改",
+                "提示",
                 MessageBoxButton.OK,
                 MessageBoxImage.Warning);
                             isunlockFPSErrorMSG = true;
@@ -2320,12 +2320,12 @@ namespace ww_unlockfps
                             {
                                 Application.Current.Dispatcher.Invoke(() =>
                                 {
-                                    MessageBox.Show("Could not unlock the FPS" + Environment.NewLine +
-                        "The reason might be:" + Environment.NewLine +
-                        "1. Wuthering Waves was not closed correctly" + Environment.NewLine +
-                        "2. The user selected the wrong Wuthering Waves EXE file" + Environment.NewLine +
-                        "3. Game version update causes memory address changes that cannot be modified",
-                        "Notification",
+                                    MessageBox.Show("未能解锁 FPS" + Environment.NewLine +
+                        "可能的原因：" + Environment.NewLine +
+                        "1. 鸣潮未正确关闭" + Environment.NewLine +
+                        "2. 选择了错误的鸣潮 EXE 文件" + Environment.NewLine +
+                        "3. 游戏版本更新导致内存地址变化，无法修改",
+                        "提示",
                         MessageBoxButton.OK,
                         MessageBoxImage.Warning);
                                     isunlockFPSErrorMSG = true;
@@ -2966,7 +2966,7 @@ namespace ww_unlockfps
             }
             catch
             {
-                MessageBox.Show("INI file not exist", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("INI 文件不存在", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             string GameServerA = data[Section][OptionKey5];
@@ -2990,7 +2990,7 @@ namespace ww_unlockfps
                 if (processes.Length > 0)
                 {
                     Console.WriteLine($"{processNametest} game is already running");
-                    MessageBox.Show("Game is already running", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("游戏已在运行", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
                     return;
                 }
             }

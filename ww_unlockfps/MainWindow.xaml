@@ -6,28 +6,28 @@
         xmlns:local="clr-namespace:ww_unlockfps"
         mc:Ignorable="d"
         xmlns:xctk="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
-        Title="Wuther FPS Unlocker" Height="365" Width="350" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+        Title="鸣潮 FPS 解锁工具" Height="365" Width="350" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
 
     <DockPanel Background="{DynamicResource GradientBackground}">
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_Options" Height="23">
-                <MenuItem Header="_Setup" Click="Setup_Click" ToolTip="Set game EXE path"/>
-                <MenuItem Header="_Manual Mode" Click="Advance_Launch"/>
-                <MenuItem x:Name="check_auto_start" Header="_Auto Start" IsCheckable="True" Checked="AutoStart_Checked" Unchecked="AutoStart_Unchecked" ToolTip="Quick launch to skip GUI"/>
-                <MenuItem x:Name="check_power_saving" Header="_Power Saving" IsCheckable="True" ToolTip="Auto set FPS to 15 and low process priority upon game losing focus" Checked="Power_Saving_Checked" Unchecked="Power_Saving_Unchecked"/>
-                <MenuItem x:Name="check_clearcache" Header="_Clear Cache" Click="ClearCache_Click" ToolTip="Reset Advanced Features Cache"/>
-                <MenuItem x:Name="check_game_process_priority" Header="_Game Process Priority">
-                    <MenuItem x:Name="ck_realtime" Header="_Realtime" IsCheckable="True" Click="Priority_Click"/>
-                    <MenuItem x:Name="ck_high" Header="_High" IsCheckable="True" Click="Priority_Click"/>
-                    <MenuItem x:Name="ck_above_normal" Header="_Above Normal" IsCheckable="True" Click="Priority_Click"/>
-                    <MenuItem x:Name="ck_normal" Header="_Normal" IsCheckable="True" Click="Priority_Click"/>
-                    <MenuItem x:Name="ck_below_normal" Header="_Below Normal" IsCheckable="True" Click="Priority_Click"/>
-                    <MenuItem x:Name="ck_low" Header="_Low" IsCheckable="True" Click="Priority_Click"/>
-                    <MenuItem x:Name="ck_default" Header="_Default" IsCheckable="True" Click="Priority_Click"/>
+            <MenuItem Header="选项(_O)" Height="23">
+                <MenuItem Header="设置(_S)" Click="Setup_Click" ToolTip="设置游戏 EXE 路径"/>
+                <MenuItem Header="手动模式(_M)" Click="Advance_Launch"/>
+                <MenuItem x:Name="check_auto_start" Header="自动启动(_A)" IsCheckable="True" Checked="AutoStart_Checked" Unchecked="AutoStart_Unchecked" ToolTip="快速启动，跳过界面"/>
+                <MenuItem x:Name="check_power_saving" Header="省电模式(_P)" IsCheckable="True" ToolTip="游戏失去焦点时自动将 FPS 设为 15 并降低进程优先级" Checked="Power_Saving_Checked" Unchecked="Power_Saving_Unchecked"/>
+                <MenuItem x:Name="check_clearcache" Header="清除缓存(_C)" Click="ClearCache_Click" ToolTip="重置高级功能缓存"/>
+                <MenuItem x:Name="check_game_process_priority" Header="游戏进程优先级(_G)">
+                    <MenuItem x:Name="ck_realtime" Header="实时(_R)" IsCheckable="True" Click="Priority_Click"/>
+                    <MenuItem x:Name="ck_high" Header="高(_H)" IsCheckable="True" Click="Priority_Click"/>
+                    <MenuItem x:Name="ck_above_normal" Header="高于正常(_A)" IsCheckable="True" Click="Priority_Click"/>
+                    <MenuItem x:Name="ck_normal" Header="正常(_N)" IsCheckable="True" Click="Priority_Click"/>
+                    <MenuItem x:Name="ck_below_normal" Header="低于正常(_B)" IsCheckable="True" Click="Priority_Click"/>
+                    <MenuItem x:Name="ck_low" Header="低(_L)" IsCheckable="True" Click="Priority_Click"/>
+                    <MenuItem x:Name="ck_default" Header="默认(_D)" IsCheckable="True" Click="Priority_Click"/>
                 </MenuItem>
-                <MenuItem Header="_About" Click="About_Click"/>
+                <MenuItem Header="关于(_A)" Click="About_Click"/>
                 <Separator />
-                <MenuItem Header="_Exit" Click="Exit_Main"/>
+                <MenuItem Header="退出(_E)" Click="Exit_Main"/>
             </MenuItem>
         </Menu>
 
@@ -130,14 +130,14 @@
                 <!-- 左边的 CheckBox：默认靠左 -->
                 <CheckBox 
                   x:Name="cb_advanced"
-                  Content="Advanced Features (Beta)" Foreground="RoyalBlue"
-                  VerticalContentAlignment="Center" 
+                  Content="高级功能（测试版）" Foreground="RoyalBlue"
+                  VerticalContentAlignment="Center"
                   FontSize="13"
                   VerticalAlignment="Center"
                   HorizontalAlignment="Left">
 
                     <CheckBox.ToolTip>
-                        <ToolTip Content="Enable before starting the game, otherwise it won’t work"/>
+                        <ToolTip Content="请在启动游戏前开启，否则不生效"/>
                     </CheckBox.ToolTip>
                 </CheckBox>
             </Grid>
@@ -149,27 +149,27 @@
                 <CheckBox 
                   x:Name="check_fov"
                   IsEnabled="{Binding IsChecked, ElementName=cb_advanced}"
-                  Content="Enable FOV ADJ" 
+                  Content="启用 FOV 调整"
                   VerticalContentAlignment="Center" Foreground="RoyalBlue"
                   FontSize="13"
                   VerticalAlignment="Center"
                   HorizontalAlignment="Left">
 
                     <CheckBox.ToolTip>
-                        <ToolTip Content="N/A"/>
+                        <ToolTip Content="暂无"/>
                     </CheckBox.ToolTip>
                 </CheckBox>
 
                 <CheckBox          
                   x:Name="check_hideuid"
                   IsEnabled="{Binding IsChecked, ElementName=cb_advanced}"
-                  Content="Hide UID" Foreground="RoyalBlue"
+                  Content="隐藏 UID" Foreground="RoyalBlue"
                   VerticalContentAlignment="Center" Margin="135,0,0,0"
                   FontSize="13"
                   VerticalAlignment="Center"
                   HorizontalAlignment="Left">
                     <CheckBox.ToolTip>
-                        <ToolTip Content="N/A"/>
+                        <ToolTip Content="暂无"/>
                     </CheckBox.ToolTip>
                 </CheckBox>
 
@@ -183,14 +183,14 @@
                 <CheckBox 
                   x:Name="check_removeblur"
                   IsEnabled="{Binding IsChecked, ElementName=cb_advanced}"
-                  Content="Disable View Blur (Enable Before Launch)" Foreground="RoyalBlue"
-                  VerticalContentAlignment="Center" 
+                  Content="关闭视角虚化（启动前开启）" Foreground="RoyalBlue"
+                  VerticalContentAlignment="Center"
                   FontSize="13"
                   VerticalAlignment="Center"
                   HorizontalAlignment="Left">
 
                     <CheckBox.ToolTip>
-                        <ToolTip Content="Enable before starting the game, otherwise it won’t work"/>
+                        <ToolTip Content="请在启动游戏前开启，否则不生效"/>
                     </CheckBox.ToolTip>
                 </CheckBox>
             </Grid>
@@ -199,21 +199,21 @@
             <Grid Margin="0,12,0,0">
 
                 <!-- 左边的 CheckBox：默认靠左 -->
-                <CheckBox x:Name="check_dx11" 
-              Content="Use DX11 To Start Game" 
-              VerticalContentAlignment="Center" 
+                <CheckBox x:Name="check_dx11"
+              Content="使用 DX11 启动游戏"
+              VerticalContentAlignment="Center"
               FontSize="13"
               VerticalAlignment="Center"
               HorizontalAlignment="Left">
 
                     <CheckBox.ToolTip>
-                        <ToolTip Content="Try DirectX 11 to launch Game"/>
+                        <ToolTip Content="尝试使用 DirectX 11 启动游戏"/>
                     </CheckBox.ToolTip>
                 </CheckBox>
 
                 <!-- 右边的 Button：手动设置为靠右 -->
-                <Button x:Name="start_but" 
-                Content="Start Game" 
+                <Button x:Name="start_but"
+                Content="启动游戏"
                 Width="80" 
                 Height="25"
                 HorizontalAlignment="Right"

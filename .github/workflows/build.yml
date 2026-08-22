@@ -1,21 +1,34 @@
 name: Build WW FPS Unlocker (汉化版)
 
-# 触发方式：推送到 main 分支、打 tag、或在 Actions 页面手动点击运行
+# 只在打 v* tag 或手动点 Run 时编译，避免 push main 再跑一遍
 on:
   push:
-    branches: [ main ]
     tags: [ 'v*' ]
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: windows-latest   # 必须用 Windows，因为是 WPF (net8.0-windows) 项目
+    runs-on: windows-latest
     permissions:
-      contents: write   # 创建 Release / 上传附件需要写权限
+      contents: write
 
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
+
+      - name: 安装 MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: 编译 C++ 插件 (Release x64)
+        # 上游 v1.6.7 把预编译 DLL 从仓库删了，必须先编出
+        # ww_plugin.dll / ww_plugin_base.dll 再给 C# 当 EmbeddedResource
+        run: |
+          $slnDir = "$(Resolve-Path .)\\"
+          msbuild ww_plugin\ww_plugin.vcxproj /p:Configuration=Release /p:Platform=x64 /p:SolutionDir=$slnDir /m
+          msbuild ww_plugin_base\ww_plugin_base.vcxproj /p:Configuration=Release /p:Platform=x64 /p:SolutionDir=$slnDir /m
+          if (-not (Test-Path ww_unlockfps\Resources\ww_plugin.dll)) { throw 'ww_plugin.dll missing' }
+          if (-not (Test-Path ww_unlockfps\Resources\ww_plugin_base.dll)) { throw 'ww_plugin_base.dll missing' }
+        shell: pwsh
 
       - name: 安装 .NET 8 SDK
         uses: actions/setup-dotnet@v4
@@ -25,7 +38,6 @@ jobs:
       - name: 还原依赖 (NuGet)
         run: dotnet restore ww_unlockfps/ww_unlockfps.csproj
 
-      # 精简版（依赖框架）：产物是完整的运行文件夹，用户需自行安装 .NET 8 桌面运行时
       - name: 发布 (Release, 依赖框架)
         run: >
           dotnet publish ww_unlockfps/ww_unlockfps.csproj
@@ -37,21 +49,27 @@ jobs:
       - name: 上传编译产物（整个文件夹）
         uses: actions/upload-artifact@v4
         with:
-          name: ww_unlockfps-汉化版
-          # 上传整个 publish 目录，包含 exe / dll / runtimeconfig.json 等全部必需文件
+          name: ww_unlockfps-cn
           path: publish/**
           if-no-files-found: error
 
-      # 打 tag (v开头) 时，把整个文件夹压成 zip 并创建 Release
       - name: 打包 zip (仅打 tag 时)
         if: startsWith(github.ref, 'refs/tags/v')
-        run: Compress-Archive -Path publish/* -DestinationPath ww_unlockfps-汉化版.zip
+        run: Compress-Archive -Path publish/* -DestinationPath ww_unlockfps-cn.zip
         shell: pwsh
 
       - name: 创建 Release (仅打 tag 时)
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
-          files: ww_unlockfps-汉化版.zip
+          files: ww_unlockfps-cn.zip
+          name: ${{ github.ref_name }}
+          body: |
+            同步上游 [v1.6.7](https://github.com/30launchers/WutheringWaves-FPS-unlocker/releases/tag/v1.6.7)：Fix Advanced Features。
+
+            高级功能（FOV / 注入）改为 Dumper-7 结构扫描找偏移，游戏更新后不容易再废；扫不到再回落老特征码。
+            GUI 汉化，C++ 插件由 Actions 现场编译后嵌入。
+
+            需要安装 [.NET 8 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0)。
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

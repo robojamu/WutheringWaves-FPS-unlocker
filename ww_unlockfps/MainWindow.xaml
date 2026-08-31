@@ -14,6 +14,7 @@
                 <MenuItem Header="设置(_S)" Click="Setup_Click" ToolTip="设置游戏 EXE 路径"/>
                 <MenuItem Header="手动模式(_M)" Click="Advance_Launch"/>
                 <MenuItem x:Name="check_auto_start" Header="自动启动(_A)" IsCheckable="True" Checked="AutoStart_Checked" Unchecked="AutoStart_Unchecked" ToolTip="快速启动，跳过界面"/>
+                <MenuItem x:Name="check_auto_close" Header="自动关闭(_C)" IsCheckable="True" ToolTip="游戏退出时自动关闭本程序"/>
                 <MenuItem x:Name="check_power_saving" Header="省电模式(_P)" IsCheckable="True" ToolTip="游戏失去焦点时自动将 FPS 设为 15 并降低进程优先级" Checked="Power_Saving_Checked" Unchecked="Power_Saving_Unchecked"/>
                 <MenuItem x:Name="check_clearcache" Header="清除缓存(_C)" Click="ClearCache_Click" ToolTip="重置高级功能缓存"/>
                 <MenuItem x:Name="check_game_process_priority" Header="游戏进程优先级(_G)">

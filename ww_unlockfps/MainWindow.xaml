@@ -17,6 +17,7 @@
                 <MenuItem x:Name="check_auto_close" Header="自动关闭(_C)" IsCheckable="True" ToolTip="游戏退出时自动关闭本程序"/>
                 <MenuItem x:Name="check_power_saving" Header="省电模式(_P)" IsCheckable="True" ToolTip="游戏失去焦点时自动将 FPS 设为 15 并降低进程优先级" Checked="Power_Saving_Checked" Unchecked="Power_Saving_Unchecked"/>
                 <MenuItem x:Name="check_clearcache" Header="清除缓存(_C)" Click="ClearCache_Click" ToolTip="重置高级功能缓存"/>
+                <MenuItem x:Name="check_use_mbui" Header="启用移动端 UI(_U)" IsCheckable="True" ToolTip="（实验性）请在启动游戏前开启，否则不会生效"/>
                 <MenuItem x:Name="check_game_process_priority" Header="游戏进程优先级(_G)">
                     <MenuItem x:Name="ck_realtime" Header="实时(_R)" IsCheckable="True" Click="Priority_Click"/>
                     <MenuItem x:Name="ck_high" Header="高(_H)" IsCheckable="True" Click="Priority_Click"/>

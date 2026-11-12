@@ -12,7 +12,7 @@
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" >
 
             <Label Content="鸣潮 FPS 解锁工具" VerticalAlignment="Center" FontFamily="Meiryo" FontSize="15" HorizontalAlignment="Center"/>
-            <Label Content="v1.7.0-cn _beta date:20261001" FontFamily="Meiryo" FontSize="13" HorizontalContentAlignment="Stretch" HorizontalAlignment="Center" Foreground="DarkBlue" Margin="5"/>
+            <Label Content="v1.7.1-cn _beta date:20261024" FontFamily="Meiryo" FontSize="13" HorizontalContentAlignment="Stretch" HorizontalAlignment="Center" Foreground="DarkBlue" Margin="5"/>
             <Label Content="请让程序保持在后台运行，否则" FontFamily="Meiryo" FontSize="13" Foreground="#FFD51515" HorizontalAlignment="Center" FontWeight="Bold" Margin="5"/>
             <Label Content="解锁的帧率将不会生效！" HorizontalAlignment="Center" FontFamily="Meiryo" FontSize="13" Foreground="#FFE72A2A" FontWeight="Bold"/>
 
